@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+      - ./ai_agent/.env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./data/inventory.db
+    volumes:
+      - inventory_data:/app/data
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  inventory_data:
