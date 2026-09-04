@@ -222,7 +222,7 @@ export default function Dashboard() {
                     <Box sx={{ display: 'flex', gap: 2 }}>
             <TextField
               fullWidth
-              placeholder="e.g. How much Rice do I have?"
+              placeholder="Ask a question about your inventory"
               value={aiInput}
               onChange={(e) => setAiInput(e.target.value)}
               onKeyDown={(e) => {
